@@ -190,7 +190,9 @@ The build writes `dist/release/Anotch-Mac-Apple-Silicon.dmg` after Apple accepts
 
 The Electron workspace and provider routing are in [src](src/), native helpers and packaging are in [scripts](scripts/), and automated checks are in [tests](tests/).
 
-Use [GitHub Issues](https://github.com/enterprisetrapper/anotch-app/issues) to report bugs or suggest improvements.
+Use the [bug report form](https://github.com/enterprisetrapper/anotch-app/issues/new?template=bug-report.yml) for app bugs and [GitHub Issues](https://github.com/enterprisetrapper/anotch-app/issues) for suggestions.
+
+[Report security vulnerabilities privately](https://github.com/enterprisetrapper/anotch-app/security/advisories/new), including unintended screen or audio capture, unexpected sharing of captured content, or exposed API keys. Remove keys and sensitive content from any examples you attach.
 
 ## License
 

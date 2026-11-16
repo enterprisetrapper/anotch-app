@@ -1,0 +1,30 @@
+name: Report a bug
+description: Report something that is broken in Anotch.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This report is public. Remove API keys, personal information, and sensitive screenshots or transcripts before posting.
+        [Report potential security vulnerabilities privately](https://github.com/enterprisetrapper/anotch-app/security/advisories/new).
+  - type: input
+    id: version
+    attributes:
+      label: Anotch version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: mac
+    attributes:
+      label: macOS version and Mac chip
+      placeholder: macOS 26.1, Apple M2
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: What happened?
+      description: Include the steps to reproduce the bug, what you expected, and what happened. For answer or transcription bugs, include the provider and model.
+    validations:
+      required: true

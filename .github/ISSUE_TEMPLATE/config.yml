@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report a security vulnerability privately
+    url: https://github.com/enterprisetrapper/anotch-app/security/advisories/new
+    about: Use this for vulnerabilities involving screen capture, audio, API keys, or other private data.
