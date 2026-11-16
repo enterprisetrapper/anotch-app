@@ -1,0 +1,29 @@
+{
+  "name": "anotch",
+  "productName": "Anotch",
+  "version": "1.0.0",
+  "description": "An AI workspace for the MacBook notch",
+  "author": "Enterprise Trapper",
+  "license": "MIT",
+  "private": true,
+  "main": "src/main.js",
+  "scripts": {
+    "start": "npm run build:native && electron .",
+    "check": "node scripts/check.js",
+    "test": "node --test tests/*.test.js",
+    "build:ocr": "mkdir -p .build && xcrun swiftc -O -target arm64-apple-macos15.0 scripts/ocr.swift -o .build/anotch-ocr",
+    "build:audio": "mkdir -p .build && xcrun swiftc -O -parse-as-library -target arm64-apple-macos15.0 scripts/system-audio.swift -o .build/anotch-system-audio",
+    "build:screen": "mkdir -p .build && xcrun swiftc -O -parse-as-library -target arm64-apple-macos15.0 scripts/screen.swift -o .build/anotch-screen",
+    "build:answer": "mkdir -p .build && xcrun swiftc -O -parse-as-library -target arm64-apple-macos15.0 scripts/answer.swift -o .build/anotch-answer",
+    "build:stealth": "mkdir -p .build && xcrun swiftc -O -parse-as-library -target arm64-apple-macos15.0 scripts/stealth.swift -o .build/anotch-stealth",
+    "build:notch": "mkdir -p .build && xcrun swiftc -O -parse-as-library -target arm64-apple-macos15.0 scripts/notch.swift -o .build/anotch-notch",
+    "build:native": "npm run build:ocr && npm run build:audio && npm run build:screen && npm run build:answer && npm run build:stealth && npm run build:notch && node scripts/build-glass.js",
+    "build": "npm run check && npm run build:native && node scripts/package-mac.js",
+    "build:preview": "node scripts/package-mac.js --preview",
+    "build:release": "node scripts/package-mac.js --release"
+  },
+  "devDependencies": {
+    "electron": "45.3.2",
+    "electron-builder": "26.18.0"
+  }
+}

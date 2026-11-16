@@ -1,0 +1,43 @@
+{
+  "appId": "com.enterprisetrapper.anotch",
+  "productName": "Anotch",
+  "copyright": "Copyright © 2026 Enterprise Trapper",
+  "forceCodeSigning": true,
+  "directories": { "output": "dist" },
+  "files": ["src/**/*", "!src/renderer/logo.png", "package.json", "LICENSE"],
+  "extraResources": [
+    { "from": ".build/anotch-ocr", "to": "anotch-ocr" },
+    { "from": ".build/anotch-system-audio", "to": "anotch-system-audio" },
+    { "from": ".build/anotch-screen", "to": "anotch-screen" },
+    { "from": ".build/anotch-answer", "to": "anotch-answer" },
+    { "from": ".build/anotch-stealth", "to": "anotch-stealth" },
+    { "from": ".build/anotch-notch", "to": "anotch-notch" },
+    { "from": ".build/anotch-glass.node", "to": "anotch-glass.node" },
+    { "from": "src/renderer/logo.png", "to": "anotch-logo.png" }
+  ],
+  "electronFuses": {
+    "runAsNode": false,
+    "enableNodeOptionsEnvironmentVariable": false,
+    "enableNodeCliInspectArguments": false,
+    "enableEmbeddedAsarIntegrityValidation": true,
+    "onlyLoadAppFromAsar": true
+  },
+  "mac": {
+    "target": ["dmg"],
+    "category": "public.app-category.productivity",
+    "minimumSystemVersion": "15.0",
+    "icon": "config/icon.icns",
+    "preAutoEntitlements": false,
+    "hardenedRuntime": false,
+    "notarize": false,
+    "extendInfo": {
+      "CFBundleDisplayName": "Anotch",
+      "NSMicrophoneUsageDescription": "Anotch uses the microphone when you start live transcription.",
+      "NSAudioCaptureUsageDescription": "Anotch uses system audio when you choose Mac audio for transcription.",
+      "NSScreenCaptureUsageDescription": "Anotch reads a display or window when you capture or watch it."
+    }
+  },
+  "dmg": {
+    "artifactName": "Anotch-Mac-Apple-Silicon.dmg"
+  }
+}

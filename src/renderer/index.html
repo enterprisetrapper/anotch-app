@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anotch</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="shared.js"></script>
+  <script defer src="answer-view.js"></script>
+  <script defer src="audio.js"></script>
+  <script defer src="notch-view.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div id="notchSurface">
+    <button id="notchBand" type="button" aria-label="Open Anotch" aria-describedby="notchStatusText" aria-controls="notchPeek panel" aria-expanded="false" hidden>
+      <span class="notch-band-content">
+        <span class="notch-brand"><img src="logo.png" width="18" height="18" alt=""></span>
+        <span class="notch-status"><span id="notchStatusText">Ready</span><i aria-hidden="true"></i></span>
+      </span>
+    </button>
+    <button id="notchPeek" type="button" aria-label="Open Anotch" aria-describedby="notchPreviewText" aria-controls="panel" hidden>
+      <span class="peek-action">Open Anotch</span>
+      <span class="peek-caption" aria-hidden="true"><span>Answer</span><span class="peek-open">Open</span></span>
+      <span id="notchPreviewText"></span>
+    </button>
+
+    <main id="panel" aria-label="Anotch workspace">
+      <header id="topbar">
+        <div class="wordmark"><img src="logo.png" width="24" height="24" alt="">Anotch</div>
+        <span class="grow"></span>
+        <button id="providerStatus" class="status-pill" type="button"><i aria-hidden="true"></i><span>Checking answers…</span></button>
+        <button id="openSettings" class="button icon quiet" type="button" title="Settings (⌘,)" aria-label="Settings">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h3m4 0h9M4 12h9m4 0h3M4 17h4m4 0h8"/><circle cx="9" cy="7" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+        </button>
+        <button id="minimizeWindow" class="button icon quiet" type="button" title="Collapse to notch or minimize" aria-label="Collapse or minimize">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 14 6-6 6 6"/></svg>
+        </button>
+        <button id="closeWindow" class="button icon quiet workspace-detail" type="button" title="Close workspace" aria-label="Close workspace">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></svg>
+        </button>
+      </header>
+
+      <div class="body">
+        <div id="modeLine" class="mode-line" aria-live="polite" hidden></div>
+        <section class="answer-card" aria-labelledby="answerTitle">
+          <div class="section-head">
+            <div class="section-label" id="answerTitle">Answer</div>
+            <div id="answerProgress" class="answer-progress" role="status" hidden>Thinking…</div>
+          </div>
+          <div id="answer" class="answer-scroll" aria-live="off">
+            <div class="workspace-empty">
+              <p class="empty-copy">Ask a question to get started.</p>
+            </div>
+          </div>
+          <div class="answer-tools" role="group" aria-label="Answer actions">
+            <button id="copy" class="small-button" type="button" title="Copy answer" aria-label="Copy answer" disabled>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg>
+              <span>Copy</span>
+            </button>
+            <button id="read" class="small-button" type="button" title="Read aloud" aria-label="Read aloud" disabled>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4Zm12-1a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>
+              <span>Read aloud</span>
+            </button>
+            <button id="answerSettings" class="button icon quiet" type="button" title="Settings (⌘,)" aria-label="Settings">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h3m4 0h9M4 12h9m4 0h3M4 17h4m4 0h8"/><circle cx="9" cy="7" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+            </button>
+          </div>
+          <p id="askedQuestion" class="asked-question" hidden></p>
+        </section>
+
+        <section class="transcript-card workspace-detail" aria-labelledby="transcriptTitle">
+          <div class="section-head">
+            <div class="section-label" id="transcriptTitle">Transcript</div>
+            <span class="grow"></span>
+            <button id="answerTranscript" class="small-button" type="button" disabled>Answer</button>
+            <button id="recap" class="small-button" type="button" disabled>Recap</button>
+            <button id="toggleTranscript" class="button icon quiet" type="button" title="Show or hide transcript" aria-label="Show or hide transcript" aria-controls="transcript" aria-expanded="true">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div id="transcript" class="transcript-scroll" role="log" aria-live="polite">
+            <p class="empty-line">Press Listen to transcribe an audio source.</p>
+          </div>
+        </section>
+
+        <span id="watchStatus" class="watch-status" hidden></span>
+        <div id="attachments" class="shots" aria-label="Screenshots to attach" hidden></div>
+        <div class="composer">
+          <div class="control-bar" role="group" aria-label="Workspace controls">
+            <button id="watchScreen" class="button control" type="button" aria-pressed="false" title="Watch screen">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span class="tool-label">Watch screen</span>
+            </button>
+            <button id="screenButton" class="button control" type="button" title="Capture a screen">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+              <span class="tool-label">Capture</span>
+            </button>
+            <div class="listen-controls">
+              <button id="listen" class="button control" type="button" aria-pressed="false" title="Listen">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11v1a6 6 0 1 0 12 0v-1M12 18v3m-3 0h6"/></svg>
+                <span class="tool-label">Listen</span>
+              </button>
+              <label class="select-wrap">
+                <span class="sr">Audio source</span>
+                <select id="source" title="Audio source">
+                  <option value="mic">Mic</option>
+                  <option value="system">Mac audio</option>
+                  <option value="both">Mic + Mac</option>
+                </select>
+              </label>
+            </div>
+            <button id="autoAnswer" class="chip copilot-control workspace-detail" type="button" aria-pressed="false"><span class="copilot-label">Copilot</span></button>
+          </div>
+          <form id="askForm">
+            <label class="sr" for="question">Message Anotch</label>
+            <textarea id="question" rows="1" maxlength="4000" placeholder="Ask Anotch…" autocomplete="off" autofocus></textarea>
+            <button id="submit" class="button primary send" type="submit" title="Send question" aria-label="Send question">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>
+            </button>
+            <button id="cancel" class="button cancel" type="button" hidden>Stop</button>
+          </form>
+          <fieldset id="answerLevels" class="answer-levels">
+            <legend class="sr">Response level</legend>
+            <label title="Only the choice letter or a short answer"><input class="sr" type="radio" name="answerLevel" value="direct"><span>Direct</span></label>
+            <label title="A brief answer with the key detail"><input class="sr" type="radio" name="answerLevel" value="concise" checked><span>Concise</span></label>
+            <label title="An answer with reasoning and context"><input class="sr" type="radio" name="answerLevel" value="full"><span>Full</span></label>
+          </fieldset>
+        </div>
+      </div>
+      <footer>
+        <span id="message" role="status" data-idle><span class="hint-mark"></span> <span>Ready</span></span>
+        <span class="grow"></span>
+        <div class="actions workspace-detail">
+          <button id="askScreen" class="chip" type="button">Analyze screen</button>
+          <button id="practice" class="chip" type="button" aria-pressed="false">Practice</button>
+          <button id="newChat" class="chip" type="button">New chat</button>
+        </div>
+        <button id="stealthPanel" type="button" class="small-button" title="Show answers in a capture-protected panel">Stealth</button>
+        <button id="hidePanel" type="button" class="small-button" title="Hide Anotch before sharing your screen">Hide</button>
+        <button id="export" type="button" class="small-button workspace-detail" disabled>Export</button>
+        <button id="workspaceSize" type="button" class="small-button workspace-size" title="Switch between compact and full workspace">
+          <span class="workspace-expand">Expand</span>
+          <span class="workspace-compact">Compact</span>
+        </button>
+      </footer>
+    </main>
+  </div>
+
+  <dialog id="stealthDialog" aria-labelledby="stealthTitle">
+    <div class="dialog-head">
+      <div><h1 id="stealthTitle">Stealth mode</h1><p>Keep an answer panel visible while sharing your display.</p></div>
+      <button class="button icon quiet" type="button" data-close="stealthDialog" aria-label="Close Stealth setup">×</button>
+    </div>
+    <div class="dialog-body">
+      <ul class="shortcut-list" aria-label="Stealth shortcuts">
+        <li><span>Analyze display under pointer</span><kbd>⌃⇧J</kbd></li>
+        <li><span>Hide or show the panel</span><kbd>⌃⇧G</kbd></li>
+        <li><span>Restore the regular window</span><kbd>⌃⇧K</kbd></li>
+      </ul>
+      <p id="stealthRoute" class="field-hint"></p>
+      <p class="field-hint">Start Stealth before sharing. Check the receiving view in your meeting app to verify capture protection.</p>
+    </div>
+    <div class="dialog-foot">
+      <button class="button" type="button" data-close="stealthDialog">Cancel</button>
+      <button id="startStealth" class="button primary" type="button">Start Stealth</button>
+    </div>
+  </dialog>
+
+  <dialog id="captureDialog" aria-labelledby="captureTitle">
+    <div class="dialog-head">
+      <div><h1 id="captureTitle">Capture a screen</h1><p id="captureDescription">Pick the display or window you want to attach.</p></div>
+      <button class="button icon quiet" type="button" data-close="captureDialog" aria-label="Close capture">×</button>
+    </div>
+    <div class="dialog-body">
+      <label class="source-row" for="screenList"><span>Source</span><select id="screenList" disabled></select></label>
+      <p id="captureRoute" class="field-hint"></p>
+      <p id="captureMessage" class="form-message" role="status"></p>
+      <button id="openScreenPrivacy" class="button" type="button" hidden>Open Screen Recording settings</button>
+    </div>
+    <div class="dialog-foot">
+      <button id="refreshScreens" class="button quiet" type="button" aria-label="Refresh sources">Refresh</button>
+      <span class="grow"></span>
+      <button class="button" type="button" data-close="captureDialog">Cancel</button>
+      <button id="takeScreen" class="button primary" type="button" disabled>Attach screenshot</button>
+    </div>
+  </dialog>
+</body>
+</html>
