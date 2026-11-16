@@ -12,7 +12,8 @@ Anotch is an open-source AI assistant for the MacBook notch. Capture a window, w
 </p>
 
 <p align="center">
-  <a href="#features">Features</a>
+  <a href="https://enterprisetrapper.github.io/anotch-app/">Website</a>
+  &middot; <a href="#features">Features</a>
   &middot; <a href="#use-cases">Use cases</a>
   &middot; <a href="#quickstart">Quickstart</a>
   &middot; <a href="#screenshots">Screenshots</a>
