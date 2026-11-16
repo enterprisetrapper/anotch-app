@@ -1,6 +1,10 @@
 <p align="center">
-  <img src="assets/anotch-hero.png" width="736" alt="Anotch, an AI workspace for your MacBook notch">
+  <img src="assets/anotch-hero.png" width="736" alt="Anotch, an open-source AI assistant for the MacBook notch">
 </p>
+
+# Anotch
+
+Anotch is an open-source AI assistant for the MacBook notch. Capture a window, watch a selected display for new questions, or transcribe microphone and Mac audio. Get quick answers from Apple Intelligence on a supported Mac, or connect OpenRouter or another OpenAI-compatible provider.
 
 <p align="center">
   <a href="https://github.com/enterprisetrapper/anotch-app/releases/latest/download/Anotch-Mac-Apple-Silicon.dmg"><img src="assets/anotch-download.png" width="296" alt="Download the Anotch preview for macOS"></a><br>
@@ -8,22 +12,11 @@
 </p>
 
 <p align="center">
-  <a href="#use-cases">Use cases</a>
+  <a href="#features">Features</a>
+  &middot; <a href="#use-cases">Use cases</a>
   &middot; <a href="#quickstart">Quickstart</a>
   &middot; <a href="#screenshots">Screenshots</a>
   &middot; <a href="https://github.com/enterprisetrapper/anotch-app/releases/latest">Latest release</a>
-</p>
-
-<p align="center">
-  <img src="assets/anotch-motion.gif" width="736" alt="Product tour showing Anotch open from the notch, expand to show a transcript, and collapse">
-</p>
-
-# Ask from the MacBook notch
-
-Anotch is a small workspace for questions about what’s on your screen or what was said. Bring a window, a transcript, or a typed question, then pick how much detail you want in the answer.
-
-<p align="center">
-  <strong>Works with</strong> Apple Intelligence &middot; OpenRouter &middot; OpenAI-compatible providers
 </p>
 
 ## Features
@@ -31,7 +24,7 @@ Anotch is a small workspace for questions about what’s on your screen or what 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <h3>🖥️ Ask about a window</h3>
+      <h3>🖥️ Screen capture and watch</h3>
       Attach a screenshot with <strong>Capture</strong>. Use <strong>Watch screen</strong> to look for new questions as a selected window or display changes.
     </td>
     <td width="50%" valign="top">
@@ -41,11 +34,11 @@ Anotch is a small workspace for questions about what’s on your screen or what 
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <h3>🎧 Work from a transcript</h3>
+      <h3>🎧 Live audio transcription</h3>
       Transcribe your mic, Mac audio, or both. Answer the latest question, recap decisions, or export the workspace as Markdown.
     </td>
     <td width="50%" valign="top">
-      <h3>📌 Keep it within reach</h3>
+      <h3>📌 MacBook notch workspace</h3>
       Hover at the notch to preview your latest answer, click to open the panel, or detach it to float beside your work.
     </td>
   </tr>
@@ -100,6 +93,12 @@ shasum -a 256 -c SHA256SUMS.txt
 Choose a vision-capable model for screenshot questions with a connected provider. **Listen** uses a compatible audio endpoint from **AI Provider → Audio and Backup** or the main provider.
 
 ## Screenshots
+
+### The notch panel in action
+
+<p align="center">
+  <img src="assets/anotch-motion.gif" width="736" alt="Anotch opens from the MacBook notch, expands to show a transcript, and collapses">
+</p>
 
 ### One question, three answer lengths
 
