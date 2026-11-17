@@ -43,12 +43,18 @@
 
 <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 30; display: flex; justify-content: center; pointer-events: none">
 <div data-nav-box class="navbox" style="pointer-events: auto; width: min(400px, calc(100vw - 24px)); box-sizing: border-box; border-top: 0; border-radius: 0 0 24px 24px; display: flex; flex-direction: column; align-items: center">
-<span style="display: flex; align-items: flex-start; max-width: 100%"><span aria-hidden="true" style="width: 10px; height: 10px; background: radial-gradient(circle at 0 100%, transparent 9.5px, #000000 10px)"></span><div data-nav-hover style="width: min(340px, calc(100vw - 60px)); height: 48px; box-sizing: border-box; padding: 0 8px 0 14px; border-radius: 0 0 18px 18px; background: #000000; display: flex; align-items: center; gap: 8px">
+<div style="display: flex; align-items: flex-start; max-width: 100%"><span aria-hidden="true" style="width: 10px; height: 10px; background: radial-gradient(circle at 0 100%, transparent 9.5px, #000000 10px)"></span><div class="notch-nav" data-nav-hover>
 <a href="#top" data-nav-close style="display: flex; align-items: center; gap: 9px; color: #FFFFFF; font: 600 15px -apple-system, BlinkMacSystemFont, 'SF Pro Display', Inter, system-ui, sans-serif; letter-spacing: -0.01em; text-decoration: none"><img src="assets/logo.png" alt="" width="24" height="24" style="border-radius: 6px"><span>Anotch</span></a>
 <span style="flex: 1"></span>
-<a class="an-btn" href="https://github.com/enterprisetrapper/anotch-app/releases/latest/download/Anotch-Mac-Apple-Silicon.dmg" data-nav-close style="height: 30px; padding: 0 12px; border-radius: 15px; background: #A0EFC7; color: #0C2A1D; font: 600 13px -apple-system, BlinkMacSystemFont, 'SF Pro Text', Inter, system-ui, sans-serif; text-decoration: none; display: flex; align-items: center">Download</a>
+<a class="nav-github" href="https://github.com/enterprisetrapper/anotch-app" data-nav-close aria-label="View Anotch on GitHub">
+<img src="assets/github-mark.svg" width="20" height="20" alt="">
+</a>
+<a class="an-btn nav-download" href="https://github.com/enterprisetrapper/anotch-app/releases/latest/download/Anotch-Mac-Apple-Silicon.dmg" data-nav-close aria-label="Download Anotch for macOS">
+<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8m-3-3 3 3 3-3M3 11v2h10v-2"/></svg>
+<span>Download</span>
+</a>
 <button type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav" data-nav-toggle style="width: 34px; height: 34px; padding: 0; border: 0; border-radius: 10px; background: transparent; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="chev"><path d="m6 9 6 6 6-6"/></svg></button>
-</div><span aria-hidden="true" style="width: 10px; height: 10px; background: radial-gradient(circle at 100% 100%, transparent 9.5px, #000000 10px)"></span></span>
+</div><span aria-hidden="true" style="width: 10px; height: 10px; background: radial-gradient(circle at 100% 100%, transparent 9.5px, #000000 10px)"></span></div>
 <div class="dc" data-nav-panel hidden>
 <nav id="site-nav" class="an-drop" aria-label="Sections" style="width: 100%; box-sizing: border-box; padding: 8px 10px 12px; display: flex; flex-direction: column; gap: 2px">
 <a class="an-rise an-opt" href="#how" data-nav-close style="height: 50px; padding: 0 14px; border-radius: 12px; color: #F2F2F4; text-decoration: none; display: flex; align-items: center; gap: 14px; animation-delay: 0.03s"><span style="font: 400 12px ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace; color: #8B93A1">01</span><span style="flex: 1; font: 600 17px -apple-system, BlinkMacSystemFont, 'SF Pro Display', Inter, system-ui, sans-serif; letter-spacing: -0.01em">How it works</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
@@ -65,7 +71,9 @@
 <h1 class="an-rise" style="flex: 999 1 520px; margin: 0; font: 700 clamp(52px, 9.400vw, 128px)/0.92 -apple-system, BlinkMacSystemFont, 'SF Pro Display', Inter, system-ui, sans-serif; letter-spacing: -0.05em">The answer,<br>at a glance.</h1>
 <div class="an-rise" style="animation-delay: 0.150s; flex: 1 1 300px; max-width: 380px; padding-bottom: 10px; display: flex; flex-direction: column; align-items: flex-start; gap: 22px">
 <p style="margin: 0; font: 400 18px/1.5 -apple-system, BlinkMacSystemFont, 'SF Pro Text', Inter, system-ui, sans-serif; color: #B9BDC6; text-wrap: pretty">Anotch is an open-source AI workspace that lives in your MacBook notch. Ask, let it listen, or point it at your screen. The answer drops down in one line.</p>
-<a class="an-btn" href="https://github.com/enterprisetrapper/anotch-app/releases/latest/download/Anotch-Mac-Apple-Silicon.dmg" style="height: 52px; padding: 0 24px; border-radius: 14px; background: #A0EFC7; color: #0C2A1D; font: 600 17px -apple-system, BlinkMacSystemFont, 'SF Pro Text', Inter, system-ui, sans-serif; text-decoration: none; display: inline-flex; align-items: center">Download for Mac</a>
+<a class="an-btn download-badge" href="https://github.com/enterprisetrapper/anotch-app/releases/latest/download/Anotch-Mac-Apple-Silicon.dmg">
+<img src="assets/download-macos.png" width="640" height="192" alt="Download Anotch for macOS">
+</a>
 <span style="font: 400 13px ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace; color: #8B93A1">macOS 15 or later / Apple silicon / Public preview</span>
 </div>
 </section>
@@ -294,7 +302,9 @@
 
 <div class="an-reveal" style="padding: clamp(56px, 9vw, 112px) 20px clamp(64px, 10vw, 128px); display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center">
 <h2 style="margin: 0; font: 700 clamp(40px, 7.400vw, 96px)/0.96 -apple-system, BlinkMacSystemFont, 'SF Pro Display', Inter, system-ui, sans-serif; letter-spacing: -0.045em; text-wrap: balance">Put the answer in your notch.</h2>
-<a class="an-btn" href="https://github.com/enterprisetrapper/anotch-app/releases/latest/download/Anotch-Mac-Apple-Silicon.dmg" style="height: 52px; padding: 0 24px; border-radius: 14px; background: #A0EFC7; color: #0C2A1D; font: 600 17px -apple-system, BlinkMacSystemFont, 'SF Pro Text', Inter, system-ui, sans-serif; text-decoration: none; display: inline-flex; align-items: center">Download for Mac</a>
+<a class="an-btn download-badge" href="https://github.com/enterprisetrapper/anotch-app/releases/latest/download/Anotch-Mac-Apple-Silicon.dmg">
+<img src="assets/download-macos.png" width="640" height="192" alt="Download Anotch for macOS">
+</a>
 <span style="font: 400 13px ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace; color: #8B93A1">macOS 15 or later / Apple silicon / Public preview</span>
 <p style="margin: 0; max-width: 420px; color: #B9BDC6; font-size: 14px; line-height: 1.5">If macOS blocks first launch, follow <a href="https://support.apple.com/en-us/102445">Apple’s Open Anyway steps</a>. <a href="https://github.com/enterprisetrapper/anotch-app/releases/latest/download/SHA256SUMS.txt">Installer checksum</a></p>
 </div>
@@ -308,7 +318,10 @@
 <span style="display: flex; align-items: center; gap: 8px; color: #F2F2F4; font: 600 15px -apple-system, BlinkMacSystemFont, 'SF Pro Display', Inter, system-ui, sans-serif"><img src="assets/logo.png" alt="" width="22" height="22"><span>Anotch</span></span>
 <a href="https://github.com/enterprisetrapper/anotch-app/releases/tag/v1.0.0">v1.0.0</a>
 <span style="flex: 1"></span>
-<a href="https://github.com/enterprisetrapper/anotch-app">Source on GitHub</a>
+<a class="footer-github" href="https://github.com/enterprisetrapper/anotch-app">
+<img src="assets/github-mark.svg" width="16" height="16" alt="">
+Source on GitHub
+</a>
 <a href="https://github.com/enterprisetrapper/anotch-app/blob/main/LICENSE">MIT license</a>
 <a href="https://github.com/enterprisetrapper/anotch-app/issues/new/choose">Report an issue</a>
 </div>

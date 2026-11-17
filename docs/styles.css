@@ -39,6 +39,51 @@ button:disabled { cursor: default; }
 [data-band] { max-width: min(322px, calc(100vw - 170px)); }
 [data-mode="closed"] [data-band], .preview-band { max-width: calc(100vw - 92px); }
 .privacy-table:focus-visible { outline: 2px solid #A0EFC7; outline-offset: 3px; }
+.notch-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: min(340px, calc(100vw - 46px));
+  height: 48px;
+  box-sizing: border-box;
+  padding: 0 8px 0 14px;
+  border-radius: 0 0 18px 18px;
+  background: #000;
+}
+.nav-github {
+  display: grid;
+  place-items: center;
+  flex: 0 0 32px;
+  height: 32px;
+  border-radius: 10px;
+  transition: background .15s ease;
+}
+.nav-github:hover { background: rgba(255, 255, 255, .12); }
+.nav-download {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 15px;
+  background: #A0EFC7;
+  color: #0C2A1D;
+  font: 600 13px -apple-system, BlinkMacSystemFont, 'SF Pro Text', Inter, system-ui, sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-download svg, .footer-github img { flex: none; }
+.download-badge {
+  display: block;
+  width: min(232px, 100%);
+  border-radius: 12px;
+}
+.download-badge img { display: block; width: 100%; height: auto; }
+.footer-github { display: inline-flex; align-items: center; gap: 8px; }
+@media (max-width: 359px) {
+  .notch-nav { gap: 4px; padding-inline: 10px 6px; }
+  .nav-download { padding-inline: 8px; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
